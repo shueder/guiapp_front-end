@@ -36,7 +36,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HttpClientModule,
     RouterModule.forRoot([
       {path: '', component: LoginComponent},
-      {path: 'menu', component: MenuComponent}
+      {path: 'menu', component: MenuComponent},
+      {path: 'evento', component: EventoComponent}
     ]),
     FormsModule
   ],

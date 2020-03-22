@@ -7,8 +7,9 @@ import {EventoComponent} from './menu/menu/evento/evento.component';
 
 
 const routes: Routes = [
-  {path: 'menu', component: MenuComponent},
-  {path: 'menu/evento',component: EventoComponent,outlet: "submenu"},
+  {path: 'menu', component: MenuComponent,children: [
+      {path: 'evento',component: EventoComponent,pathMatch: 'full'},
+    ]},
   {path: '',component: LoginComponent},
   {path: '**',component: PageNotFoundComponent}
 ];
