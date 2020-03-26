@@ -18,6 +18,8 @@ import { LoginService } from './login/login.service';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LugaresComponent } from './menu/menu/lugares/lugares.component';
+import { ToursComponent } from './menu/menu/tours/tours.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
       SidebarComponent,
       TopbarComponent,
       PageNotFoundComponent,
-      EventoComponent
+      EventoComponent,
+      LugaresComponent,
+      ToursComponent
    ],
   imports: [
     BrowserModule,

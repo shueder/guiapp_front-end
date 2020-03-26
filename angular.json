@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "guiapp": {
@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "guiapp"
+    }
+  },
+  "defaultProject": "guiapp",
+  "cli": {
+    "analytics": "09e5aa60-0c97-4d55-af6f-4e1b47bed448"
+  }
 }

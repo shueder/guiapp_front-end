@@ -1,3 +1,276 @@
-<p>evento works!</p>
+<div style="padding-left: 20px;background-color: whitesmoke;">
+    <h1>Eventos</h1>
+    <div style="float: right;padding-right: 45px;"><button onclick="document.getElementById('modal-wrapperAdd').style.display='block'">Agregar</button></div>
+    <div class="submenudescription"> 
+        Esta sección es para agregar eventos o actividades que se realizaran con su empresa en uno o varios lugares,
+        agregar el nombre del evento, su ubicación, la fecha de inicio del evento y una descripción de las actividades
+        que se realizaran en el evento, a continación se muestran los eventos agregados los cuales puede ver, editar y
+        eliminar y un apartado para agregar nuevos eventos
+    </div>
+    
+</div>
 
-<h1>Hola mundo</h1>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="tablestyle">
+    <table>        
+        <thead>
+            <tr>            
+                <th>Evento</th>
+                <th>Ubicación</th>
+                <th>Fecha</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>        
+        <tbody>
+            
+            <tr *ngFor="let event of list_events">
+                <td style="width: 200px;">
+                    <a style="color: black;">{{event.evento}}</a>
+                </td>
+                <td style="width: 260px;">
+                    <a style="color: black;">{{event.ubicacion}}</a>
+                </td>
+                <td style="width: 100px;">
+                    <a style="color: black;"> {{event.fecha}}</a>
+                </td>
+                <td style="width: 350px;">
+                    <a style="color: black;"> {{event.descripcion}}</a>
+                </td>
+                <td>
+                   <div class="btn-group">
+                        <button class="btng fa fa-eye" (click)="verevent(event)"  onclick="document.getElementById('modal-wrapper1').style.display='block'"></button>
+                        <button class="btnb fa fa-pencil " (click)="verevent(event)" onclick="document.getElementById('modal-wrapper').style.display='block'"></button>
+                        <button class="btnr fa fa-trash"(click)="verevent(event)" onclick="document.getElementById('modal-wrapper2').style.display='block'"></button>
+                    </div>
+                    
+                </td>                
+            </tr>            
+        </tbody>
+    </table>
+    
+</div>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<title>Agregar Nuevo Evento</title>
+<style>
+*{margin:0px; padding:0px; font-family:Helvetica, Arial, sans-serif;}
+
+/* Full-width input fields */
+
+</style>
+
+<body >
+<div id="modal-wrapperAdd" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php">
+        
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('modal-wrapperAdd').style.display='none'" class="close" title="Close PopUp">&times;</span>
+      <h1 style="text-align:center">Agregar Nuevo Evento</h1>
+    </div>
+
+    <input [(ngModel)]="event2.evento" [ngModelOptions]="{standalone: true}" type="text" name="eevento" placeholder="Nombre del Evento">
+    <input [(ngModel)]="event2.ubicacion" [ngModelOptions]="{standalone: true}" type="text" name="uubicacion" placeholder="Ubicación">
+    <input [(ngModel)]="event2.fecha" [ngModelOptions]="{standalone: true}" type="text" name="ffecha" placeholder="Fecha y Hora">
+    <input [(ngModel)]="event2.descripcion" [ngModelOptions]="{standalone: true}" type="text" name="ddescripcion" placeholder="Descripción">
+             
+    <button style="width: 50%;margin-left: 25%;" type="submit" (click)="agregar()">Agregar Evento</button>
+        
+  </form>
+  
+</div>
+
+<script>
+// If user clicks anywhere outside of the modal, Modal will close
+
+var modal = document.getElementById('modal-wrapperAdd');
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html>
+<title>Editar Evento</title>
+<style>
+*{margin:0px; padding:0px; font-family:Helvetica, Arial, sans-serif;}
+
+/* Full-width input fields */
+
+</style>
+
+<body >
+<div id="modal-wrapper" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php">
+        
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
+      <h1 style="text-align:center">Editar Evento</h1>
+    </div>
+
+    <input [(ngModel)]="event2.evento" [ngModelOptions]="{standalone: true}" type="text" name="eevento">
+    <input [(ngModel)]="event2.ubicacion" [ngModelOptions]="{standalone: true}" type="text" name="uubicacion">
+    <input [(ngModel)]="event2.fecha" [ngModelOptions]="{standalone: true}" type="text" name="ffecha">
+    <input [(ngModel)]="event2.descripcion" [ngModelOptions]="{standalone: true}" type="text" name="ddescripcion">
+    
+    
+
+         
+      <button style="width: 50%;margin-left: 25%;" type="submit" (click)="editarevent()">Editar Evento</button>
+    
+    
+  </form>
+  
+</div>
+
+<script>
+// If user clicks anywhere outside of the modal, Modal will close
+
+var modal = document.getElementById('modal-wrapper');
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<title>Visualizar</title>
+<style>
+*{margin:0px; padding:0px; font-family:Helvetica, Arial, sans-serif;}
+
+/* Full-width input fields */
+
+</style>
+
+<body >
+<div id="modal-wrapper1" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php">
+        
+    <div class="imgcontainer">
+        <span onclick="document.getElementById('modal-wrapper1').style.display='none'" class="close" title="Close PopUp">&times;</span>
+        <h1 style="text-align:center">Visualizar</h1>
+    </div>
+
+
+    <div style="margin-left: 25px;">
+    <div>
+        <label class="col-md-2"><h5>Evento:</h5></label>
+        <input class="col-md-8"[(ngModel)]="event2.evento" [ngModelOptions]="{standalone: true}" type="text" name="nEvento" id="eevento"disabled>
+    </div>
+    <div>
+        <label class="col-md-2"><h5>Ubicación:</h5></label>
+        <input class="col-md-8"[(ngModel)]="event2.ubicacion" [ngModelOptions]="{standalone: true}" type="text" name="uubicacion" disabled>
+    </div>
+    <div>
+        <label class="col-md-2"><h5>Fecha:</h5></label>
+        <input class="col-md-8"[(ngModel)]="event2.fecha" [ngModelOptions]="{standalone: true}" type="text" name="ffecha" disabled>
+    </div>
+    <div>
+        <label class="col-md-2"><h5>Descripción:</h5></label>
+        <input class="col-md-8"[(ngModel)]="event2.descripcion" [ngModelOptions]="{standalone: true}" type="text" name="ddescripcion" disabled>
+    </div>
+    </div>    
+    
+  </form>
+  
+</div>
+
+<script>
+// If user clicks anywhere outside of the modal, Modal will close
+
+var modal = document.getElementById('modal-wrapper');
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<title>Eliminar</title>
+<style>
+*{margin:0px; padding:0px; font-family:Helvetica, Arial, sans-serif;}
+
+/* Full-width input fields */
+
+</style>
+
+<body >
+<div id="modal-wrapper2" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php">
+        
+    <div class="imgcontainer">
+        <span onclick="document.getElementById('modal-wrapper2').style.display='none'" class="close" title="Close PopUp">&times;</span>
+        <h1 style="text-align:center">Eliminar</h1>
+    </div>
+    <div>
+        <label class="col-md-2"><h2>Nombre:</h2></label>
+        <input class="col-md-8"[(ngModel)]="event2.evento" [ngModelOptions]="{standalone: true}" type="text" name="nEvento" id="nEvento"disabled>
+    </div>
+    <div>
+        <label class="col-md-2"><h2>Email:</h2></label>
+        <input class="col-md-8"[(ngModel)]="event2.descripcion" [ngModelOptions]="{standalone: true}" type="text" name="ddescripcion" disabled>
+    </div>
+    
+
+    <button type="button" class="btnr btn-danger" (click)="borrarevent(event)">Eliminar</button>
+    
+  </form>
+  
+</div>
+
+<script>
+// If user clicks anywhere outside of the modal, Modal will close
+
+var modal = document.getElementById('modal-wrapper');
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
